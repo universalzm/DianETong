@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eegolink - 重新设计</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* 隐藏默认的滚动条 */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        /* 移动端菜单样式 */
+        #mobile-menu {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        #mobile-menu .bg-white {
+            height: auto;
+            min-height: 100%;
+        }
+        /* 首页图片样式 */
+        #home-image {
+            width: 100%; /* 横向拉满 */
+            height: auto; /* 纵向按比例 */
+            display: block; /* 移除图片底部默认的空白 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-blue-600">
+                <img src="https://www.eegolink.com/wp-content/uploads/2023/07/eegolink-logo-blue.svg" alt="Eegolink 标志" class="h-8">
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#" data-section="home" class="text-gray-700 hover:text-blue-600 transition duration-300">首页</a></li>
+                    <li><a href="#" data-section="company" class="text-gray-700 hover:text-blue-600 transition duration-300">公司简介</a></li>
+                    <li><a href="#" data-section="business" class="text-gray-700 hover:text-blue-600 transition duration-300">主营业务</a></li>
+                    <li><a href="#" data-section="contact" class="text-gray-700 hover:text-blue-600 transition duration-300">联系我们</a></li>
+                    <li><a href="#" data-section="store" class="text-gray-700 hover:text-blue-600 transition duration-300">我要开店</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
+                <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-white w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="mobile-menu-close-btn" class="text-gray-700 focus:outline-none" aria-label="Close Mobile Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#" data-section="home" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">首页</a></li>
+                    <li><a href="#" data-section="company" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">公司简介</a></li>
+                    <li><a href="#" data-section="business" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">主营业务</a></li>
+                    <li><a href="#" data-section="contact" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">联系我们</a></li>
+                    <li><a href="#" data-section="store" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">我要开店</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main class="container mx-auto px-4 py-8" id="main-content">
+        <section id="home-content" class="section active">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">首页</h2>
+            <img id="home-image" src="https://raw.githubusercontent.com/universalzm/DianETong/refs/heads/main/%E9%A6%96%E9%A1%B5%E5%86%85%E5%AE%B9.jpg" alt="首页内容" />
+        </section>
+        <section id="company-content" class="section hidden">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">公司简介</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div id="company-menu" class="md:w-64">
+                    <ul class="space-y-2">
+                        <li><a href="#" data-subsection="intro" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">公司介绍</a></li>
+                        <li><a href="#" data-subsection="vision" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">愿景</a></li>
+                        <li><a href="#" data-subsection="mission" class="block text-lg text-gray-700 hover:text-blue-600 transition duration-300">我们的使命</a></li>
+                    </ul>
+                </div>
+                <div id="company-detail" class="md:col-span-3">
+                    <h3 id="intro-title" class="text-xl font-semibold text-blue-600 mb-4">公司介绍</h3>
+                    <p id="intro-content" class="text-gray-700">这是公司介绍的内容，等待更新。</p>
+                </div>
+            </div>
+        </section>
+        <section id="business-content" class="section hidden">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">主营业务</h2>
+            <p class="text-gray-700 text-center">这是主营业务的内容，等待更新。</p>
+        </section>
+        <section id="contact-content" class="section hidden">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">联系我们</h2>
+            <p class="text-gray-700 text-center">这是联系我们的内容，等待更新。</p>
+        </section>
+        <section id="store-content" class="section hidden">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-8">我要开店</h2>
+            <p class="text-gray-700 text-center">这是我要开店的内容，等待更新。</p>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">关注我们：</p>
+            <div class="flex justify-center space-x-4">
+                <div>
+                    <p>微信公众号</p>
+                                     </div>
+                <div>
+                    <p>企业微信二维码</p>
+                                    </div>
+            </div>
+            <p>© 2023 Eegolink. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuCloseBtn = document.getElementById("mobile-menu-close-btn");
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const closeIcon = document.getElementById("close-icon");
+        const navLinks = document.querySelectorAll('header nav a, #mobile-menu nav a');
+        const sections = document.querySelectorAll('.section');
+        const companyMenuLinks = document.querySelectorAll('#company-menu a');
+        const companyDetailTitle = document.getElementById('intro-title');
+        const companyDetailContent = document.getElementById('intro-content');
+        const sectionContents = {
+            home: { title: "首页", content: "<div class='flex justify-center'></div>" },
+            company: { title: "公司简介", content: "这是公司简介的内容，等待更新。" },
+            business: { title: "主营业务", content: "这是主营业务的内容，等待更新。" },
+            contact: { title: "联系我们", content: "这是联系我们的内容，等待更新。" },
+            store: { title: "我要开店", content: "这是我要开店的内容，等待更新。" },
+        };
+        const companySubSections = {
+            intro: { title: "公司介绍", content: "这是公司介绍的内容，等待更新。" },
+            vision: { title: "愿景", content: "这是公司的愿景，我们致力于成为..." },
+            mission: { title: "我们的使命", content: "我们的使命是...，为客户提供卓越的服务。" },
+        };
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+            hamburgerIcon.classList.toggle("hidden");
+            closeIcon.classList.toggle("hidden");
+        }
+        function showSection(sectionId) {
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId + '-content').classList.remove('hidden');
+        }
+        function updateCompanySubSection(subSectionId) {
+            companyDetailTitle.textContent = companySubSections[subSectionId].title;
+            companyDetailContent.textContent = companySubSections[subSectionId].content;
+        }
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuCloseBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenu.addEventListener("click", (event) => {
+            if (event.target === mobileMenu) {
+                toggleMobileMenu();
+            }
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const section = link.dataset.section;
+                showSection(section);
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        companyMenuLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const subSection = link.dataset.subsection;
+                updateCompanySubSection(subSection);
+                companyMenuLinks.forEach(subLink => subLink.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        showSection('home');
+        document.querySelector('header nav a[data-section="home"]').classList.add('active');
+        if (document.querySelector('#mobile-menu nav a[data-section="home"]')) {
+             document.querySelector('#mobile-menu nav a[data-section="home"]')) {
+        }
+        updateCompanySubSection('intro');
+        document.querySelector('#company-menu a[data-subsection="intro"]').classList.add('active');
+    </script>
+</body>
+</html>
